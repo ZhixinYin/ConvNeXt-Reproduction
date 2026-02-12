@@ -38,6 +38,7 @@ The training loss for 40 epochs for ConvNeXt is below
 This work aims to produce ConvNeXt under limited resources. Although we only train it for 40 epochs, compared with traditional CNNs, which we trained earlier and used same dataset, accuracy of both training set and test set are already significantly better. For traditional CNNs, the one with best training set and test set accuracy is ResNet (85.46% and 54.72%). While we achieve 78.81% and 60.17%. Although training set accuracy is lower, test set accuracy is 6% higher than ResNet. With further training, training set accuracy is expected to surpass ResNet. It can be found that with better architecture design like assigning more blocks to 14 * 14 resolution, replacing ReLU with GELU, using layer normalisation, instead of batch normalisation can improve accuracy.
 
 We also compare the results with Swin-T, which also be trained for 40 epochs under same dataset and preprocessing techniques. Swin-T achieved 82.88% training set accuracy, which indicates stronger fitting ability due to self-attention mechanism. However, our training accuracy is just 4% lower. We can see that well-designed CNN architecture can also achieve competitive results under limited resources.
+
 Overall, these results suggest that self-attention is not superior than CNNs under limited training budget. With better designed architecture, CNNs like ConvNeXt can narrow the gaps with transformer-based architecture.
 
 ## References
