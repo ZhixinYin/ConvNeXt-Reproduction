@@ -4,20 +4,18 @@
 This project reproduces the original ConvNeXt architecture as described in the original paper.
 
 ## Architecture Summary
-|               Stage | Layer / Block   | Configuration                                                     | Output Shape  |
-| ------------------: | --------------- | ----------------------------------------------------------------- | ------------- |
-|               Input | Image           | RGB Image                                                         | 224 × 224 × 3 |
-| **Patch Embedding** | Conv2D          | 96 filters, 4×4 kernel, stride 4                                  | 56 × 56 × 96  |
-|                     | LayerNorm       | –                                                                 | 56 × 56 × 96  |
-|         **Stage 1** | Swin Block ×2   | Window-MSA / Shifted-Window-MSA<br>Heads=3, Window=7×7, MLP=384   | 56 × 56 × 96  |
-|   **Patch Merging** | Downsample      | 2×2 merge, channels ×2                                            | 28 × 28 × 192 |
-|         **Stage 2** | Swin Block ×2   | Window-MSA / Shifted-Window-MSA<br>Heads=6, Window=7×7, MLP=768   | 28 × 28 × 192 |
-|   **Patch Merging** | Downsample      | 2×2 merge, channels ×2                                            | 14 × 14 × 384 |
-|         **Stage 3** | Swin Block ×6   | Window-MSA / Shifted-Window-MSA<br>Heads=12, Window=7×7, MLP=1536 | 14 × 14 × 384 |
-|   **Patch Merging** | Downsample      | 2×2 merge, channels ×2                                            | 7 × 7 × 768   |
-|         **Stage 4** | Swin Block ×2   | Window-MSA / Shifted-Window-MSA<br>Heads=24, Window=7×7, MLP=3072 | 7 × 7 × 768   |
-|            **Head** | Global Avg Pool | –                                                                 | 768           |
-|                     | Linear          | Fully connected                                                   | 200      |
+| Stage               | Layer / Block     | Configuration                                 | Output Shape  |
+| ------------------- | ----------------- | --------------------------------------------- | ------------- |
+| Input               | Image             | RGB Image                                     | 224 × 224 × 3 |
+| **Patch Embedding** | Conv2D            | 96 filters, 4×4 kernel, stride 4              | 56 × 56 × 96  |
+|                     | LayerNorm         | –                                             | 56 × 56 × 96  |
+| **Stage 1**         | ConvNeXt Block ×3 | Depthwise 7×7, GELU, LayerNorm, Linear layers | 56 × 56 × 96  |
+| **Stage 2**         | ConvNeXt Block ×3 | Depthwise 7×7, GELU, LayerNorm, Linear layers | 28 × 28 × 192 |
+| **Stage 3**         | ConvNeXt Block ×9 | Depthwise 7×7, GELU, LayerNorm, Linear layers | 14 × 14 × 384 |
+| **Stage 4**         | ConvNeXt Block ×3 | Depthwise 7×7, GELU, LayerNorm, Linear layers | 7 × 7 × 768   |
+| Head                | Global Avg Pool   | –                                             | 768           |
+|                     | Linear            | Fully connected                               | 200           |
+
 
 
 ## Dataset
