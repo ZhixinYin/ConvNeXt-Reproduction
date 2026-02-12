@@ -24,6 +24,8 @@ This project reproduces the original ConvNeXt architecture as described in the o
 tiny-imagenet-200 is used as the dataset in this reproduction. The images are augmented aligns with the original paper (random resized crop, random horizontal flip, cutmix, mixup, erase, autoaugment and label smoothing). We do use test set in this reproduction, but the purpose of this reproduction is to validate correctness of the architecture, not claiming state-of-the-art.
 
 ## Results
+We train ConvNeXt for 40 epochs
+
 | Metric            | Value |
 | ----------------- | ----- |
 | Training accuracy | 78.81% |
