@@ -30,6 +30,7 @@ tiny-imagenet-200 is used as the dataset in this reproduction. The images are au
 | Test accuracy     | 60.17% |
 
 The training loss for 40 epochs for ConvNeXt is below
+
 ![](image/TrainingLoss.png)
 
 
